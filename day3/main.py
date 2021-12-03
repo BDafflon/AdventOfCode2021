@@ -1,5 +1,4 @@
 import copy
-import operator
 
 
 def day3_1(data):
@@ -28,12 +27,6 @@ def day3_2_1(data, op, r):
         d = [t[1:] for t in data if t[0] == 1 and u >= z or t[0] == 0 and z >= u]
     else:
         r.append('0' if z <= u else '1')
-
-        if len(data) == 2 and u == z:
-            if data[0][0] == 0:
-                return day3_2_1([], "CO2", r + [str(i) for i in data[0][1:]])
-            else:
-                return day3_2_1([], "CO2", r + [str(i) for i in data[1][1:]])
         d = [t[1:] for t in data if t[0] == 1 and u < z or t[0] == 0 and z <= u]
     return day3_2_1(d, op, r)
 
