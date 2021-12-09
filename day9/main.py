@@ -9,17 +9,10 @@ def voisin(h, w,mH,mW):
 
 def day9_2(data):
     points = [(h,w) for h in range(0, len(data)) for w in range(0, len(data[0])) if data[h][w] < min([data[j][i] for j, i in voisin(h, w, len(data), len(data[0]))])]
-    print(points)
-    bassins = []
-    for p in points:
-        print(p)
-        bassins.append(day9_2_1(data,p, []))
-
-    return reduce((lambda x, y: x * y), sorted(bassins)[-3:])
+    return reduce((lambda x, y: x * y), sorted([day9_2_1(data,p, []) for p in points])[-3:])
 
 
 def day9_2_1(data,lowPoint,points):
-
         if points is None:
             points = []
 
